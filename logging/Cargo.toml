@@ -1,0 +1,13 @@
+[package]
+name = "wdt-logging"
+version = "0.1.0"
+authors = ["Max Jöhnk <maxjoehnk@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+log = "0.4"
+slog = "2.5"
+slog-stdlog = "4.1"
+slog-term = "2.6"
+slog-async = "2.5"
+slog-scope = "4.3"

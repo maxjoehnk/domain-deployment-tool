@@ -1,0 +1,15 @@
+[package]
+name = "wdt-modules"
+version = "0.1.0"
+authors = ["Max Jöhnk <maxjoehnk@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+wdt-logging = { path = "../logging" }
+wdt-module-api = { path = "./api" }
+wdt-module-firefox = { path = "./firefox" }
+wdt-module-software = { path = "./software" }
+wdt-module-printer = { path = "./printer" }

@@ -1,0 +1,12 @@
+[workspace]
+members = [
+    "client",
+    "server",
+    "modules",
+    "modules/api",
+    "modules/firefox",
+    "modules/printer",
+    "modules/software",
+    "modules/wireguard"
+]
+

@@ -9,8 +9,9 @@ pub struct WireguardModule {
 
 impl Module for WireguardModule {
     type Error = WireguardModuleError;
+    type State = ();
 
-    fn apply(&self) -> Result<(), Self::Error> {
+    fn apply(&self, previous_state: Option<Self::State>) -> Result<Self::State, Self::Error> {
         unimplemented!()
     }
 

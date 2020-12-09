@@ -49,9 +49,5 @@ fn get_state_path(flags: &Flags) -> String {
 
 #[cfg(not(target_os = "windows"))]
 fn get_state_path(flags: &Flags) -> String {
-    if flags.user {
-        unimplemented!()
-    }else {
-        unimplemented!()
-    }
+    unimplemented!()
 }

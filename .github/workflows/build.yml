@@ -30,7 +30,9 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.platform }}
-          path: target/release/wdt-*
+          path: |
+            target/release/wdt-*
+            !target/release/wdt-*.d
       - name: Annotate commit with clippy warnings
         uses: actions-rs/clippy-check@v1
         with:

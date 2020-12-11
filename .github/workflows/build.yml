@@ -8,9 +8,12 @@ on:
       - master
 
 jobs:
-  build-linux:
-    name: Build Linux
-    runs-on: ubuntu-latest
+  build:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, windows-latest]
+    name: Build ${{ matrix.platform }}
+    runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v2
       - name: Stable with rustfmt and clippy
@@ -26,41 +29,8 @@ jobs:
           args: --release --all-features
       - uses: actions/upload-artifact@v2
         with:
-          name: Linux Server
-          path: target/release/wdt-server
-      - uses: actions/upload-artifact@v2
-        with:
-          name: Linux Client
-          path: target/release/wdt-client
-      - name: Annotate commit with clippy warnings
-        uses: actions-rs/clippy-check@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          args: --all-features
-  build-windows:
-    name: Build Windows
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Stable with rustfmt and clippy
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          components: rustfmt, clippy
-      - name: Release build
-        uses: actions-rs/cargo@v1
-        with:
-          command: build
-          args: --release --all-features
-      - uses: actions/upload-artifact@v2
-        with:
-          name: Windows Server
-          path: target/release/wdt-server.exe
-      - uses: actions/upload-artifact@v2
-        with:
-          name: Windows Client
-          path: target/release/wdt-client.exe
+          name: ${{ matrix.platform }}
+          path: target/release/wdt-*
       - name: Annotate commit with clippy warnings
         uses: actions-rs/clippy-check@v1
         with:
